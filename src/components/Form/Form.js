@@ -43,9 +43,11 @@ export default function Form() {
     ) {
       reset();
 
-      return toast.warn(`${newUser.name} is already in contacts`, {
-        position: toast.POSITION.TOP_CENTER,
-      });
+      return toast.warn(
+        `"${newUser.name}" is already in contacts`,
+        { icon: '🤦‍♂️' },
+        { position: toast.POSITION.TOP_CENTER, }
+      );
       // return alert(`${newUser.name} is already in contacts`);
     };
 
@@ -88,7 +90,7 @@ export default function Form() {
       </Label>
 
       <Button type="submit">Add contact</Button>
-      <ToastContainer autoClose={1500} />
+      <ToastContainer autoClose={1500} theme="colored" />
     </FormCard>
   );
 }
