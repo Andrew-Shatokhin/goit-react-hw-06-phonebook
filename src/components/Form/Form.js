@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -40,8 +42,12 @@ export default function Form() {
       )
     ) {
       reset();
-      return alert(`${newUser.name} is already in contacts`);
-    }
+
+      return toast.warn(`${newUser.name} is already in contacts`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      // return alert(`${newUser.name} is already in contacts`);
+    };
 
     dispatch(addContact(newUser));
     reset();
@@ -82,6 +88,7 @@ export default function Form() {
       </Label>
 
       <Button type="submit">Add contact</Button>
+      <ToastContainer autoClose={1500} />
     </FormCard>
   );
 }
